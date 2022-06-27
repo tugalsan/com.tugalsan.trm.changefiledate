@@ -1,4 +1,4 @@
-module com.tugalsan.tryTwo {
+module com.tugalsan.trm.changefiledate {
     requires gwt.user;
     requires com.tugalsan.api.log;
     requires com.tugalsan.api.random;
