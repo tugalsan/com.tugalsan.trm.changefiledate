@@ -52,7 +52,7 @@ public class Main {
             d.ce("getDateFromFileName_end_normal", "Skipped -> date in filename not proper: " + fileLabel);
             return;
         }
-        var date = TGS_Time.toDate(split[1]);
+        var date = TGS_Time.ofDate(split[1]);
         if (date == null) {
             d.ce("getDateFromFileName_end_normal", "Skipped -> date in filename cannot be used: " + fileLabel);
             return;
