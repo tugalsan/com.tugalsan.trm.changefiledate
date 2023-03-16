@@ -6,21 +6,33 @@ import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.random.server.*;
 import com.tugalsan.api.time.client.*;
 import java.nio.file.*;
+import java.util.Locale;
 
 //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
 public class Main {
 
     final private static TS_Log d = TS_Log.of(Main.class);
 
-    /*
-        for filenames named //FILENAME DD-MM-YYYY
-        this func re-dates them and randomize time.
-        example input params
-        Path.of("C:", "me", "desk", "PDF")
-        HOUR btw 18-24
-        MIN btw 18-24
-        SEC btw 18-24
-     */
+    public static boolean isLocaleDefaultTurkish(){
+        return Locale.getDefault().getDisplayCountry().equals("Türkiye") 
+                && Locale.getDefault().getDisplayName().equals("Türkçe (Türkiye)");
+    }
+    
+    public static void main(String... s) {
+        Locale.forLanguageTag("tr-TR");
+        System.out.println(isLocaleDefaultTurkish());
+        if (true) {
+            return;
+        }
+        randomizeTime(
+                Path.of("C:", "me", "desk", "PDF"),
+                18, 24,
+                0, 59,
+                0, 59
+        );
+    }
+
+    //For filenames named "LABEL DD-MM-YYYY", this func re-dates them and randomize time.
     public static void randomizeTime(Path directory, int hourMin, int hourMax, int minMin, int minMax, int secMin, int secMax) {
         if (!TS_DirectoryUtils.isExistDirectory(directory)) {
             d.ce("run", "dir not exists");
