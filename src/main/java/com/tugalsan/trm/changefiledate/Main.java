@@ -13,14 +13,9 @@ public class Main {
 
     final private static TS_Log d = TS_Log.of(Main.class);
 
-    public static boolean isLocaleDefaultTurkish(){
-        return Locale.getDefault().getDisplayCountry().equals("Türkiye") 
-                && Locale.getDefault().getDisplayName().equals("Türkçe (Türkiye)");
-    }
-    
     public static void main(String... s) {
-        Locale.forLanguageTag("tr-TR");
-        System.out.println(isLocaleDefaultTurkish());
+        //Locale.forLanguageTag("tr-TR");
+        System.out.println(Locale.getDefault().getLanguage().equals("tr"));
         if (true) {
             return;
         }
