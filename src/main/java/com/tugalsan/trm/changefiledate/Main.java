@@ -4,9 +4,9 @@ import com.tugalsan.api.cast.client.*;
 import com.tugalsan.api.file.server.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.random.server.*;
+import com.tugalsan.api.serialcom.server.TS_SerialComUtils;
 import com.tugalsan.api.time.client.*;
 import java.nio.file.*;
-import java.util.Locale;
 
 //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
 public class Main {
@@ -14,9 +14,8 @@ public class Main {
     final private static TS_Log d = TS_Log.of(Main.class);
 
     public static void main(String... s) {
-        //Locale.forLanguageTag("tr-TR");
-        System.out.println(Locale.getDefault().getLanguage().equals("tr"));
-        if (true) {
+        TS_SerialComUtils.test();
+        if (true){
             return;
         }
         randomizeTime(
