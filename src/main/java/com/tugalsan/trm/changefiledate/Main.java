@@ -4,7 +4,7 @@ import com.tugalsan.api.cast.client.*;
 import com.tugalsan.api.file.server.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.random.server.*;
-import com.tugalsan.api.serialcom.server.TS_SerialComUtils;
+import com.tugalsan.api.serialcom.server.test.*;
 import com.tugalsan.api.time.client.*;
 import java.nio.file.*;
 
@@ -14,8 +14,11 @@ public class Main {
     final private static TS_Log d = TS_Log.of(Main.class);
 
     public static void main(String... s) {
-        TS_SerialComUtils.test();
-        if (true){
+        d.cr("main", "TS_SerialComTestUtils.test()");
+        TS_SerialComTestJavaCode.testUtils();
+        d.cr("main", "TS_SerialComTestBuilder.test()");
+        TS_SerialComTestJavaCode.testBuilder();
+        if (true) {
             return;
         }
         randomizeTime(
