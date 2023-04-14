@@ -6,6 +6,4 @@ module com.tugalsan.trm.changefiledate {
     requires com.tugalsan.api.time;
     requires com.tugalsan.api.cast;
     requires com.tugalsan.api.file;
-    requires com.tugalsan.api.serialcom;
-    requires com.fazecast.jSerialComm;
 }

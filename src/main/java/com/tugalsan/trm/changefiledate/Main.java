@@ -4,23 +4,17 @@ import com.tugalsan.api.cast.client.*;
 import com.tugalsan.api.file.server.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.random.server.*;
-import com.tugalsan.api.serialcom.server.test.*;
 import com.tugalsan.api.time.client.*;
 import java.nio.file.*;
 
 //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
+//cd C:\me\codes\com.tugalsan\trm\com.tugalsan.trm.changefiledate
+//java --enable-preview --add-modules jdk.incubator.concurrent -jar target/com.tugalsan.trm.changefiledate-1.0-SNAPSHOT-jar-with-dependencies.jar    
 public class Main {
 
     final private static TS_Log d = TS_Log.of(Main.class);
 
     public static void main(String... s) {
-        d.cr("main", "TS_SerialComTestUtils.test()");
-        TS_SerialComTestJavaCode.testUtils();
-        d.cr("main", "TS_SerialComTestBuilder.test()");
-        TS_SerialComTestJavaCode.testBuilder();
-        if (true) {
-            return;
-        }
         randomizeTime(
                 Path.of("C:", "me", "desk", "PDF"),
                 18, 24,
