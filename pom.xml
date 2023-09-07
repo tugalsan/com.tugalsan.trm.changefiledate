@@ -36,8 +36,8 @@
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
         <exec.mainClass>com.tugalsan.trm.changefiledate.Main</exec.mainClass>
     </properties>
     <build>
@@ -69,13 +69,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <release>19</release>
-                                        <compilerArgs>
-                        <arg>--enable-preview</arg>
-                        <arg>--add-modules=jdk.incubator.concurrent</arg>
+                    <release>20</release><enablePreview>true</enablePreview>
+                    <compilerArgs>
+                        <arg>--add-modules</arg>
+                        <arg>jdk.incubator.concurrent</arg>
+                        <arg>--add-modules</arg>
+                        <arg>jdk.incubator.vector</arg>
+                        <!-- <arg>-XX:+EnableDynamicAgentLoading -->
                     </compilerArgs>
-
-                    
                 </configuration>
             </plugin>
         </plugins>
