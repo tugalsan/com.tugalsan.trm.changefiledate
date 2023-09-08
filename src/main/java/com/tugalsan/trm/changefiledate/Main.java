@@ -9,7 +9,7 @@ import java.nio.file.*;
 
 //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
 //cd C:\me\codes\com.tugalsan\trm\com.tugalsan.trm.changefiledate
-//java --enable-preview --add-modules jdk.incubator.concurrent -jar target/com.tugalsan.trm.changefiledate-1.0-SNAPSHOT-jar-with-dependencies.jar    
+//java --enable-preview --add-modules jdk.incubator.vector -jar target/com.tugalsan.trm.changefiledate-1.0-SNAPSHOT-jar-with-dependencies.jar    
 public class Main {
 
     final private static TS_Log d = TS_Log.of(Main.class);
