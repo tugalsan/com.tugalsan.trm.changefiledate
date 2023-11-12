@@ -3,6 +3,7 @@ module com.tugalsan.trm.changefiledate {
     requires com.tugalsan.api.log;
     requires com.tugalsan.api.runnable;
     requires com.tugalsan.api.random;
+    requires com.tugalsan.api.validator;
     requires com.tugalsan.api.time;
     requires com.tugalsan.api.cast;
     requires com.tugalsan.api.file;

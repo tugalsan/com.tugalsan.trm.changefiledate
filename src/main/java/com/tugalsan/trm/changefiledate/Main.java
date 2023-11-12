@@ -15,6 +15,18 @@ public class Main {
     final private static TS_Log d = TS_Log.of(Main.class);
 
     public static void main(String... s) {
+        TS_DirectoryUtils.copyDirectory(
+                Path.of("\\\\10.0.0.222\\kalite_dokumanlar\\Entegre Yönetim Sistemi"),
+                Path.of("C:\\Users\\me\\Desktop\\Entegre Yönetim Sistemi"),
+                true,
+                false,
+                path -> {
+                    return TS_FileUtils.getNameType(path).contains("xls") || TS_FileUtils.getNameType(path).contains("doc");
+                }
+        );
+        if (true) {
+            return;
+        }
         randomizeTime(
                 Path.of("C:", "me", "desk", "PDF"),
                 18, 24,
