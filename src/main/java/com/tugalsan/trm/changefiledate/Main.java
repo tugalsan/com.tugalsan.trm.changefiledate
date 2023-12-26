@@ -20,9 +20,8 @@ public class Main {
                 Path.of("C:\\Users\\me\\Desktop\\Entegre Yönetim Sistemi"),
                 true,
                 false,
-                path -> {
-                    return TS_FileUtils.getNameType(path).contains("xls") || TS_FileUtils.getNameType(path).contains("doc");
-                }
+                path -> !TS_FileUtils.getNameType(path).contains("pdf") && !TS_FileUtils.getNameType(path).contains("PDF"),
+                true
         );
         if (true) {
             return;
