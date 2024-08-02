@@ -15,17 +15,17 @@ public class Main {
     final private static TS_Log d = TS_Log.of(Main.class);
 
     public static void main(String... s) {
-        TS_DirectoryUtils.copyDirectory(
-                Path.of("\\\\10.0.0.222\\kalite_dokumanlar\\Entegre Yönetim Sistemi"),
-                Path.of("C:\\Users\\me\\Desktop\\Entegre Yönetim Sistemi"),
-                true,
-                false,
-                path -> !TS_FileUtils.getNameType(path).contains("pdf") && !TS_FileUtils.getNameType(path).contains("PDF"),
-                true
-        );
-        if (true) {
-            return;
-        }
+//        TS_DirectoryUtils.copyDirectory(
+//                Path.of("\\\\10.0.0.222\\kalite_dokumanlar\\Entegre Yönetim Sistemi"),
+//                Path.of("C:\\Users\\me\\Desktop\\Entegre Yönetim Sistemi"),
+//                true,
+//                false,
+//                path -> !TS_FileUtils.getNameType(path).contains("pdf") && !TS_FileUtils.getNameType(path).contains("PDF"),
+//                true
+//        );
+//        if (true) {
+//            return;
+//        }
         randomizeTime(
                 Path.of("C:", "me", "desk", "PDF"),
                 18, 24,
