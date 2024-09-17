@@ -1,10 +1,13 @@
 package com.tugalsan.trm.changefiledate;
 
 import com.tugalsan.api.cast.client.*;
+import com.tugalsan.api.file.img.server.TS_FileImageUtils;
 import com.tugalsan.api.file.server.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.random.server.*;
 import com.tugalsan.api.time.client.*;
+import java.awt.Color;
+import java.awt.image.*;
 import java.nio.file.*;
 
 //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
@@ -26,6 +29,20 @@ public class Main {
 //        if (true) {
 //            return;
 //        }
+
+        var pathImgSrc = Path.of("C:\\Users\\me\\Desktop").resolve("Adsız.jpg");
+        var bufferedImage = TS_FileImageUtils.toImage(pathImgSrc);
+        var u_blurredImage = TS_FileImageUtils.filter(bufferedImage, TS_FileImageUtils.FILTER_BLUR_BLOX(), true);
+        if (u_blurredImage.isExcuse()) {
+            System.out.println(u_blurredImage.excuse());
+            return;
+        }
+        var pathImgDst = pathImgSrc.resolveSibling("AdsızBluured.jpg");
+        TS_FileImageUtils.toFile(u_blurredImage.value(), pathImgDst, 0.8f);
+
+        if (true) {
+            return;
+        }
         randomizeTime(
                 Path.of("C:", "me", "desk", "PDF"),
                 18, 24,
