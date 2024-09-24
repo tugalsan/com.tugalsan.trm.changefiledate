@@ -36,7 +36,7 @@ public class Main {
             d.ce("run", "dir not exists");
             return;
         }
-        TS_DirectoryUtils.subFiles(directory, "*.pdf", false, false).forEach(file -> {
+        TS_DirectoryUtils.subFiles(directory, null, true, false).forEach(file -> {
             getDateFromFileName_start_with_date(file,
                     TS_RandomUtils.nextInt(hourMin, hourMax),
                     TS_RandomUtils.nextInt(minMin, minMax),
