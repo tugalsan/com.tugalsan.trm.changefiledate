@@ -14,14 +14,18 @@ public class Main {
 
     final private static TS_Log d = TS_Log.of(true, Main.class);
 
-    public static void main(String... s) {
-        var dir = Path.of("C:", "Users", "me", "Desktop", "PDF");
-        randomizeTime_start_with_date(
-                dir,
-                10, 17,
-                0, 59,
-                0, 59
-        );
+    public static void main(String... args) {
+        TS_DirectoryUtils.subDirectories(Path.of("\\192.168.7.1"), true, false).forEach(s -> {
+            d.cr("a", s);
+        });
+
+//        var dir = Path.of("C:", "Users", "me", "Desktop", "PDF");
+//        randomizeTime_start_with_date(
+//                dir,
+//                10, 17,
+//                0, 59,
+//                0, 59
+//        );
 //        randomizeTime_end_normal(
 //                dir,
 //                18, 24,
