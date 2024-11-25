@@ -6,6 +6,7 @@ import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.random.server.*;
 import com.tugalsan.api.time.client.*;
 import java.nio.file.*;
+import java.util.Comparator;
 
 //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
 //cd C:\me\codes\com.tugalsan\trm\com.tugalsan.trm.changefiledate
@@ -15,8 +16,84 @@ public class Main {
     final private static TS_Log d = TS_Log.of(true, Main.class);
 
     public static void main(String... args) {
-        TS_DirectoryUtils.subDirectories(Path.of("\\192.168.7.1"), true, false).forEach(s -> {
-            d.cr("a", s);
+        var dir = Path.of("C:\\abc");
+        int hourMin = 10, hourMax = 17;
+        TS_DirectoryUtils.subDirectories(dir, true, true).forEach(subDir -> {
+            var subDirName = TS_DirectoryUtils.getName(subDir);
+            var idx = subDirName.lastIndexOf(" ");
+            if (idx == -1) {
+                return;
+            }
+            var dateStr = subDirName.substring(idx + 1);
+            if (!TGS_Time.isDateReversed(dateStr)) {
+                return;
+            }
+            var date = TGS_Time.ofDate_YYYY_MM_DD(dateStr);
+            if (date == null) {
+                d.cr("main", "date false positive", subDir);
+                return;
+            }
+            d.cr("main", "date detected", date.toString_YYYY_MM_DD(), subDir);
+            TS_DirectoryUtils.subFiles(dir, null, true, true).forEach(subFile -> {
+                if (TS_FileUtils.getTimeLastModified(subFile).hasEqualDateWith(date)) {
+                    return;
+                }
+                var dateAndtime = date.cloneIt();
+                dateAndtime.setHour(TS_RandomUtils.nextInt(hourMin, hourMax));
+                dateAndtime.setMinute(TS_RandomUtils.nextInt(0, 59));
+                dateAndtime.setSecond(TS_RandomUtils.nextInt(0, 59));
+                TS_FileUtils.setTimeCreationTime(subFile, dateAndtime);
+                TS_FileUtils.setTimeLastModified(subFile, dateAndtime);
+                TS_FileUtils.setTimeAccessTime(subFile, dateAndtime);
+                d.cr("main", "subFile set", subFile);
+            });
+            if (TS_DirectoryUtils.getTimeLastModified(subDir).hasEqualDateWith(date)) {
+                return;
+            }
+            var dateAndtime = TS_DirectoryUtils.subFiles(dir, null, true, true).stream()
+                    .map(subFile -> TS_FileUtils.getTimeCreationTime(subFile))
+                    .max(Comparator.comparing(TGS_Time::getTime))
+                    .orElseThrow();
+            dateAndtime.setHour(TS_RandomUtils.nextInt(hourMin, hourMax));
+            dateAndtime.setMinute(TS_RandomUtils.nextInt(0, 59));
+            dateAndtime.setSecond(TS_RandomUtils.nextInt(0, 59));
+            TS_DirectoryUtils.setTimeCreationTime(subDir, dateAndtime);
+            TS_DirectoryUtils.setTimeLastModified(subDir, dateAndtime);
+            TS_DirectoryUtils.setTimeAccessTime(subDir, dateAndtime);
+
+        });
+        TS_DirectoryUtils.subFiles(dir, null, true, true).forEach(subFile -> {
+            var subFileName = TS_FileUtils.getNameLabel(subFile);
+            var idx = subFileName.lastIndexOf(" ");
+            if (idx == -1) {
+                d.cr("main", "skip idx == -1", subFile);
+                return;
+            }
+            var dateStr = subFileName.substring(idx + 1);
+            if (!TGS_Time.isDateReversed(dateStr)) {
+                d.cr("main", "0", dateStr.indexOf('.', 0));
+                d.cr("main", "5", dateStr.indexOf('.', 5));
+                d.cr("main", "TGS_Time.isDate", TGS_Time.isDate(dateStr));
+                d.cr("main", "skip !TGS_Time.isDateReversed(dateStr)", subFile);
+                return;
+            }
+            var date = TGS_Time.ofDate_YYYY_MM_DD(dateStr);
+            if (date == null) {
+                d.cr("main", "date false positive", subFile);
+                return;
+            }
+            d.cr("main", "date detected", date.toString_YYYY_MM_DD(), subFile);
+            if (TS_FileUtils.getTimeLastModified(subFile).hasEqualDateWith(date)) {
+                return;
+            }
+            var dateAndtime = date.cloneIt();
+            dateAndtime.setHour(TS_RandomUtils.nextInt(hourMin, hourMax));
+            dateAndtime.setMinute(TS_RandomUtils.nextInt(0, 59));
+            dateAndtime.setSecond(TS_RandomUtils.nextInt(0, 59));
+            TS_FileUtils.setTimeCreationTime(subFile, dateAndtime);
+            TS_FileUtils.setTimeLastModified(subFile, dateAndtime);
+            TS_FileUtils.setTimeAccessTime(subFile, dateAndtime);
+            d.cr("main", "subFile set", subFile);
         });
 
 //        var dir = Path.of("C:", "Users", "me", "Desktop", "PDF");
