@@ -5,8 +5,14 @@ import com.tugalsan.api.file.server.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.random.server.*;
 import com.tugalsan.api.time.client.*;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.nio.file.*;
 import java.util.Comparator;
+import jcifs.context.SingletonContext;
+import jcifs.smb.NtlmPasswordAuthentication;
+import jcifs.smb.SmbFile;
 
 //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
 //cd C:\me\codes\com.tugalsan\trm\com.tugalsan.trm.changefiledate
@@ -16,7 +22,8 @@ public class Main {
     final private static TS_Log d = TS_Log.of(true, Main.class);
 
     public static void main(String... args) {
-        var dir = Path.of("C:\\abc");
+
+        var dir = Path.of("\\\\192.168.7.1\\tasarim_diskaydok\\120 04 160 TKS\\Kaynak Talimatı\\Kaynak Planı");
         int hourMin = 10, hourMax = 17;
         TS_DirectoryUtils.subDirectories(dir, true, true).forEach(subDir -> {
             var subDirName = TS_DirectoryUtils.getName(subDir);
