@@ -16,7 +16,7 @@ public class Main {
     final private static TS_Log d = TS_Log.of(true, Main.class);
 
     public static void main(String... args) {
-        var dir = Path.of("\\\\192.168.7.1\\tasarim_diskaydok\\120 04 160 TKS\\Kaynak Talimatı\\Kaynak Planı");
+        var dir = Path.of("\\\\10.0.0.222\\ofis_tarama\\m\\_yeni");
         int hourMin = 10, hourMax = 17;
         TS_DirectoryUtils.subDirectories(dir, true, true).forEach(subDir -> {
             var subDirName = TS_DirectoryUtils.getName(subDir);
